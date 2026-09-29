@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Comic</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fff8e7; margin: 0; padding: 30px 15px; }
+    .wrap { max-width: 640px; margin: auto; }
+    .panel { background: #fff; border: 3px solid #222; border-radius: 8px; padding: 16px; margin-bottom: 24px; box-shadow: 6px 6px 0 #222; }
+    .panel img { width: 100%; border: 2px solid #222; border-radius: 4px; }
+    .panel p { white-space: pre-line; line-height: 1.5; }
+    .btn { display: inline-block; padding: 12px 20px; margin-right: 8px; background: #e63946; color: #fff; text-decoration: none; border: 2px solid #222; border-radius: 4px; font-weight: bold; }
+    .btn.alt { background: #fff; color: #222; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Your comic</h1>
+    {% for p in layout %}
+    <div class="panel">
+      <h2>Panel {{ p.panel }}: {{ p.title }}</h2>
+      <img src="{{ p.image_url }}" alt="Panel {{ p.panel }}">
+      <p>{{ p.text }}</p>
+    </div>
+    {% endfor %}
+    <a class="btn" href="/export-success?file={{ pdf_name }}">Download PDF</a>
+    <a class="btn alt" href="/">Make another</a>
+  </div>
+</body>
+</html>
